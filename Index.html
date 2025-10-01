@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Strategik O‘yin</title>
+  <style>
+    body { text-align: center; background: #222; color: white; }
+    canvas { border: 2px solid white; background: #87CEEB; }
+  </style>
+</head>
+<body>
+  <h1>Strategik O‘yin</h1>
+  <canvas id="gameCanvas" width="400" height="400"></canvas>
+
+  <script>
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas.getContext("2d");
+
+    // 10 ta askar (kichkina yashil kvadratlar)
+    let soldiers = [];
+    for (let i = 0; i < 10; i++) {
+      soldiers.push({
+        x: Math.random() * 380,
+        y: Math.random() * 380,
+        size: 10,
+        color: "green"
+      });
+    }
+
+    // O‘yin maydonini chizish
+    function draw() {
+      ctx.fillStyle = "#87CEEB"; // fon (osmon rangi)
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // askarlarni chizish
+      for (let s of soldiers) {
+        ctx.fillStyle = s.color;
+        ctx.fillRect(s.x, s.y, s.size, s.size);
+      }
+    }
+
+    setInterval(draw, 100); // 0.1 sekundda yangilash
+  </script>
+</body>
+</html>
